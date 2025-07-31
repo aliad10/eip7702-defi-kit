@@ -5,3 +5,6 @@
 npm install -g typescript tsx
 
 npm install
+
+# run
+tsx indes.ts
