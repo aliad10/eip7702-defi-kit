@@ -1,25 +1,30 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import { initializeSigners } from "./helpers/initializeSigners";
 import { checkDelegationStatus } from "./helpers/checkDelegationStatus";
 import { approveAndLendInAave } from "./transactions/approveAndLendInAave";
 import { revokeDelegation } from "./helpers/revokeDelegation";
-import { sendEthTransactions } from "./transactions/sendEthTransactions";
+import { sendEthTransactionsUsingPimlico } from "./transactions/sendEthTransactionsUsingPimlico";
 
 import { sendTokenTransaction } from "./transactions/sendTokenTransaction";
 
 async function sendEIP7702Transactions() {
   try {
     // Initialize signers and get initial balances
-    const { provider, signer } = await initializeSigners();
+    // const { provider, signer } = await initializeSigners();
 
     // Check delegation status before starting
-    await checkDelegationStatus(provider, signer.address);
+    // await checkDelegationStatus(provider, signer.address);
 
-    // Execute transactions
-    const receipt = await approveAndLendInAave(signer);
+    // // Execute transactions
+    // const receipt = await approveAndLendInAave(signer);
 
-    console.log("\n=== SUCCESS ===");
+    // console.log("\n=== SUCCESS ===");
 
-    await revokeDelegation(signer);
+    // await revokeDelegation(signer);
+
+    const receipt = await sendEthTransactionsUsingPimlico();
 
     return { receipt };
   } catch (error) {
