@@ -1,4 +1,6 @@
-export const checkDelegationStatus = async (provider, address) => {
+import { ethers } from "ethers";
+
+export const checkDelegationStatus = async (provider: ethers.JsonRpcProvider, address: string) => {
   console.log("checking delegation status ...");
 
   try {

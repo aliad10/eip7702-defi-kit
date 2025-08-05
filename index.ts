@@ -12,7 +12,7 @@ import { sendTokenTransaction } from "./transactions/sendTokenTransaction";
 async function sendEIP7702Transactions() {
   try {
     // Initialize signers and get initial balances
-    // const { provider, signer } = await initializeSigners();
+    const { provider, signer } = await initializeSigners();
 
     // Check delegation status before starting
     // await checkDelegationStatus(provider, signer.address);
@@ -24,7 +24,7 @@ async function sendEIP7702Transactions() {
 
     // await revokeDelegation(signer);
 
-    const receipt = await sendEthTransactionsUsingPimlico();
+    const receipt = await sendEthTransactionsUsingPimlico(signer);
 
     return { receipt };
   } catch (error) {
