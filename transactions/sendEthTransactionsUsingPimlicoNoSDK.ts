@@ -193,7 +193,7 @@ export const sendEthTransactionsUsingPimlico = async (signer: ethers.Wallet) => 
 
   // Create the user operation for EntryPoint v0.7
   const userOperation: UserOperation = {
-    sender: signer.address, // EIP-7702: EOA address becomes smart account
+    sender: "0xe6Cae83BdE06E4c305530e199D7217f42808555B", // EIP-7702: EOA address becomes smart account
     nonce: ethers.toBeHex(nonce),
     initCode: "0x", // No factory needed for EIP-7702
     callData: callData,
